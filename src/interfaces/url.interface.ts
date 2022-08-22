@@ -3,6 +3,8 @@ export interface Constants {
     DECODED_SUCCES:string,
     INVALID_URL:string,
     INVALID_ENCODEDURL:string
+    DEVELOPMENT:string,
+    PRODUCTION:string
 }
 export interface Result<T> {
     success:boolean

@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
 import UrlRoute from './routes/url.route';
 import logger from './utils/logger';
+import { PORT, HOST_NAME } from './config';
 
-const PORT = 3000;
 class App {
   private app: Application;
 
@@ -26,7 +26,7 @@ class App {
 
   public start(): void {
     this.app.listen(PORT, () => {
-      logger.info(`App is started`);
+      logger.info(`App is started as  http://${HOST_NAME}:${PORT}`);
     });
   }
 

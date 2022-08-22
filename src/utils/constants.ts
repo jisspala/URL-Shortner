@@ -5,6 +5,8 @@ const constants: Constants = {
   DECODED_SUCCES: 'The url is decoded successfully',
   INVALID_URL: 'The url is not valid',
   INVALID_ENCODEDURL: 'encodedUrl is not valid',
+  DEVELOPMENT:'development',
+  PRODUCTION:'production'
 };
 
 export default constants;
