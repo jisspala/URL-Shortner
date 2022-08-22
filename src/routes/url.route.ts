@@ -10,7 +10,6 @@ class UrlRoute {
   }
 
   private initializeRoutes() {
-    console.log("this UrlRoute",this)
     this.router.post('/encode', this.urlController.encode);
     this.router.get('/decode', this.urlController.decode);
   }

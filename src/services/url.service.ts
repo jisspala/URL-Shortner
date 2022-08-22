@@ -5,6 +5,7 @@ class UrlService {
   public async encode(url: string): Promise<Result<EncodedData>> {
     let result: Result<EncodedData>;
     const encodedUrl: string = '';
+    
     result = {
       success: true,
       data: { encodedUrl },

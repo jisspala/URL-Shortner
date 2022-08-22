@@ -6,13 +6,21 @@ class App {
 
   constructor() {
     this.app = express();
+    this.initializeMiddlewares();
     this.initializeRoutes();
+  }
+  
+  private initializeMiddlewares(): void {
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: true }));
   }
 
   private initializeRoutes(): void {
     const urlRoute: UrlRoute = new UrlRoute();
     this.app.use('/', urlRoute.getRouter());
   }
+
+ 
 
   public start(): void {
     this.app.listen(PORT, () => {
