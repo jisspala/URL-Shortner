@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import constants from '../utils/constants';
 import UrlService from '../services/url.service';
 import { Result, EncodedData, DecodedData } from '../interfaces/url.interface';
+import { validateEncodedUrl } from '../utils/util';
 
 class UrlController {
   private urlService: UrlService = new UrlService();
@@ -9,8 +10,8 @@ class UrlController {
   public encode = async (req: Request, res: Response): Promise<void> => {
     let encodeResult: Result<EncodedData>;
     const url: string = req.body.url as string;
-    encodeResult = await this.urlService.encode(url);
 
+    encodeResult = await this.urlService.encode(url);
     if (encodeResult.success) {
       res.status(200).json({ data: encodeResult.data, message: encodeResult.message });
     } else {
@@ -21,13 +22,15 @@ class UrlController {
   public decode = async (req: Request, res: Response): Promise<void> => {
     let decodedResult: Result<DecodedData>;
     const encodedUrl: string = req.query.encodedUrl as string;
-
-    decodedResult = await this.urlService.decode(encodedUrl);
-
-    if (decodedResult.success) {
-      res.status(200).json({ data: decodedResult.data, message: decodedResult.message });
+    if (validateEncodedUrl(encodedUrl)) {
+      decodedResult = await this.urlService.decode(encodedUrl);
+      if (decodedResult.success) {
+        res.status(200).json({ data: decodedResult.data, message: decodedResult.message });
+      } else {
+        res.status(400).json({ message: decodedResult.message });
+      }
     } else {
-      res.status(400).json({ message: decodedResult.message });
+      res.status(400).json({ message: constants.INVALID_URL });
     }
   };
 }
