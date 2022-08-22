@@ -1,6 +1,8 @@
 export interface Constants {
     ENCODED_SUCCESS:string,
-    DECODED_SUCCES:string
+    DECODED_SUCCES:string,
+    INVALID_URL:string,
+    INVALID_ENCODEDURL:string
 }
 export interface Result<T> {
     success:boolean
