@@ -4,7 +4,9 @@
   "description": "URL shortening service using by using Node and Typescript",
   "main": "server.ts",
   "scripts": {
+    "start": "npm run build && cross-env NODE_ENV=production node dist/server.js",
     "dev": "cross-env NODE_ENV=development nodemon",
+    "build": "cross-env NODE_ENV=production tsc",
     "lint": "eslint --ext .ts src/",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest --coverage --setupFiles dotenv/config"
