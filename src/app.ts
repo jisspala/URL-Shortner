@@ -1,5 +1,7 @@
 import express, { Application } from 'express';
 import UrlRoute from './routes/url.route';
+import logger from './utils/logger';
+
 const PORT = 3000;
 class App {
   private app: Application;
@@ -24,7 +26,7 @@ class App {
 
   public start(): void {
     this.app.listen(PORT, () => {
-      console.info(`App is started`);
+      logger.info(`App is started`);
     });
   }
 
