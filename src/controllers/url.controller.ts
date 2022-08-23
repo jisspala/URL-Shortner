@@ -30,7 +30,7 @@ class UrlController {
         res.status(400).json({ message: decodedResult.message });
       }
     } else {
-      res.status(400).json({ message: constants.INVALID_URL });
+      res.status(400).json({ message: constants.INVALID_ENCODEDURL });
     }
   };
 }

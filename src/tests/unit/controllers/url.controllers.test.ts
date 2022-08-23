@@ -37,7 +37,7 @@ describe('Shorten-Url Controllers Testing', () => {
       const urlService:UrlService = new UrlService();
 
       let dummyRequest: Request = express.request;
-      dummyRequest.query = { encodedURL: 'http://localhost:3000/ssasa' };
+      dummyRequest.query = { encodedUrl: 'http://localhost:3000/ssasa' };
       
       urlController.decode(dummyRequest, express.response);
       expect(urlService.decode).toHaveBeenCalledTimes(1);

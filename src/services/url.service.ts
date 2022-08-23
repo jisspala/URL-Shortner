@@ -32,6 +32,7 @@ class UrlService {
     this.urls.push(newRecord);
 
     const fullUrl: string = createFullUrl(newRecord.code);
+    
     result = {
       success: true,
       data: { encodedUrl: fullUrl },
@@ -51,8 +52,7 @@ class UrlService {
         success: false,
         message: constants.NOT_FOUND,
       };
-    } 
-    else {
+    } else {
       result = {
         success: true,
         data: { url: record.url },

@@ -1,22 +1,21 @@
 import UrlService from '../../../services/url.service';
-import { Result,EncodedData,DecodedData } from '../../../interfaces/url.interface';
+import { Result, EncodedData, DecodedData } from '../../../interfaces/url.interface';
 import constants from '../../../utils/constants';
-
 
 describe('Shorten-Url Service Testing', () => {
   const urlService: UrlService = new UrlService();
-  let url: string = 'httpd://google.com';
+  let url: string = 'httpd://fb.com';
   let encodedUrl: string;
 
   describe('Encode', () => {
     it('should provide encodedUrl with propper mesage', async () => {
       const result: Result<EncodedData> = await urlService.encode(url);
-  
+
       expect(result.message).toEqual(constants.ENCODED_SUCCESS);
       expect(result.success).toEqual(true);
       expect(result).toHaveProperty('data');
+      if (result.data?.encodedUrl) encodedUrl = result.data?.encodedUrl;
     });
-
   });
 
   describe('Decode', () => {
@@ -28,5 +27,4 @@ describe('Shorten-Url Service Testing', () => {
       expect(result).toHaveProperty('data');
     });
   });
-
 });

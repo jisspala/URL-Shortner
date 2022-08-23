@@ -11,7 +11,7 @@ class App {
     this.initializeMiddlewares();
     this.initializeRoutes();
   }
-  
+
   private initializeMiddlewares(): void {
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
@@ -21,8 +21,6 @@ class App {
     const urlRoute: UrlRoute = new UrlRoute();
     this.app.use('/', urlRoute.getRouter());
   }
-
- 
 
   public start(): void {
     this.app.listen(PORT, () => {
