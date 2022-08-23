@@ -1,5 +1,5 @@
 {
-  "name": "url-shortner",
+  "name": "url-shortener",
   "version": "1.0.0",
   "description": "URL shortening service using by using Node and Typescript",
   "main": "server.ts",
@@ -10,11 +10,9 @@
     "lint": "eslint --ext .ts src/",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest -c jest.config.js",
-    "test:coverage":"jest --coverage -c jest.config.js",
+    "test:coverage": "jest --coverage -c jest.config.js",
     "test:integration": "jest -c jest.config.integration.js",
     "test:end-to-end": "jest -c jest.config.end-to-end.js"
-
-
   },
   "repository": {
     "type": "git",

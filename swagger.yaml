@@ -1,13 +1,13 @@
 tags:
-- name: Url Shortner
-  description: The url shortner API
+- name: Url Shortener
+  description: The url shortener API
 
 paths:
 # [POST] encode
   /encode:
     post:
       tags:
-      - Shortner
+      - Shortener
       summary: short(encode) a url
       parameters:
       - name: body
@@ -28,7 +28,7 @@ paths:
   /decode:
     get:
       tags:
-      - Shortner
+      - Shortener
       summary: The url which we need to decode
       parameters:
       - name: encodedUrl

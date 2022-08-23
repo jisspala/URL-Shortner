@@ -29,6 +29,8 @@ class App {
   public start(): void {
     this.app.listen(PORT, () => {
       logger.info(`App is started as  http://${HOST_NAME}:${PORT}`);
+      logger.info(`API doc is available at  http://${HOST_NAME}:${PORT}/api-docs`);
+
     });
   }
 
