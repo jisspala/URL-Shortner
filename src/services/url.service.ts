@@ -55,7 +55,7 @@ class UrlService {
       result = {
         success: true,
         data: { url: record.url },
-        message: constants.DECODED_SUCCES,
+        message: constants.DECODED_SUCCESS,
       };
     }
     return result;

@@ -1,4 +1,4 @@
-import { Request} from 'express';
+import { Request } from 'express';
 import express from 'express';
 
 import UrlController from '../../../controllers/url.controller';
@@ -19,8 +19,8 @@ jest.mock('../../../services/url.service', () => {
 describe('Shorten-Url Controllers Testing', () => {
   describe('Encode', () => {
     it('Encoding Controller should call encoding service ', async () => {
-      const urlController:UrlController = new UrlController();
-      const urlService:UrlService = new UrlService();
+      const urlController: UrlController = new UrlController();
+      const urlService: UrlService = new UrlService();
 
       const dummyRequest: Request = express.request;
       dummyRequest.body = { url: 'http://google.com' };
@@ -32,12 +32,12 @@ describe('Shorten-Url Controllers Testing', () => {
 
   describe('Decode', () => {
     it('Decoding Controller should call decoding service', async () => {
-      const urlController:UrlController = new UrlController();
-      const urlService:UrlService = new UrlService();
+      const urlController: UrlController = new UrlController();
+      const urlService: UrlService = new UrlService();
 
       const dummyRequest: Request = express.request;
       dummyRequest.query = { encodedUrl: 'http://localhost:3000/ssasa' };
-      
+
       urlController.decode(dummyRequest, express.response);
       expect(urlService.decode).toHaveBeenCalledTimes(1);
     });

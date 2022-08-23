@@ -1,6 +1,6 @@
 export interface Constants {
   ENCODED_SUCCESS: string;
-  DECODED_SUCCES: string;
+  DECODED_SUCCESS: string;
   ALREADY_ENCODED: string;
   INVALID_URL: string;
   NOT_FOUND: string;
@@ -10,12 +10,14 @@ export interface Constants {
   DEVELOPMENT: string;
   PRODUCTION: string;
 }
+
 export interface Result<T> {
   success: boolean;
   message: string;
   error?: string;
   data?: T;
 }
+
 export interface Status {
   success: boolean;
   message: string;

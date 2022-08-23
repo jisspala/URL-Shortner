@@ -1,6 +1,6 @@
 import * as nodeUrl from 'node:url';
 import { BASE_URL, HOST_NAME } from '../config';
-import { Status, Result, EncodedData, DecodedData } from '../interfaces/url.interface';
+import { Status} from '../interfaces/url.interface';
 import constants from '../utils/constants';
 import logger from '../utils/logger';
 
@@ -26,12 +26,12 @@ export const validateEncodedUrl = (encodedUrl: string): Status => {
 export const getCode = (encodedUrl: string): string | undefined => {
   try {
     const { path } = nodeUrl.parse(encodedUrl, true);
-    let pathParamas: string[];
+    let pathParams: string[];
     if (path) {
-      pathParamas = path.split('/');
-      if (pathParamas.length > 2) {
+      pathParams = path.split('/');
+      if (pathParams.length > 2) {
       } else {
-        return pathParamas[1];
+        return pathParams[1];
       }
     }
   } catch (error) {

@@ -11,10 +11,10 @@ class UrlController {
     const url: string = req.body.url as string;
 
     const encodeResult: Result<EncodedData> = await this.urlService.encode(url);
-    if (encodeResult.success) {
+    if (encodeResult?.success) {
       res.status(200).json({ data: encodeResult.data, message: encodeResult.message });
     } else {
-      res.status(400).json({ message: encodeResult.message });
+      res.status(400).json({ message: encodeResult?.message });
     }
   };
 
@@ -24,12 +24,12 @@ class UrlController {
     const encodedUrl: string = req.query.encodedUrl as string;
     const isValid = validateEncodedUrl(encodedUrl);
 
-    if (isValid.success) {
+    if (isValid?.success) {
       decodedResult = await this.urlService.decode(encodedUrl);
-      if (decodedResult.success) {
+      if (decodedResult?.success) {
         res.status(200).json({ data: decodedResult.data, message: decodedResult.message });
       } else {
-        res.status(400).json({ message: decodedResult.message });
+        res.status(400).json({ message: decodedResult?.message });
       }
     } else {
       res.status(400).json({ message: constants.INVALID_ENCODEDURL });

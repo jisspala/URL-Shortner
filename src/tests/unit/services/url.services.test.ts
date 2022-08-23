@@ -8,7 +8,7 @@ describe('Shorten-Url Service Testing', () => {
   let encodedUrl: string;
 
   describe('Encode', () => {
-    it('should provide encodedUrl with propper mesage', async () => {
+    it('should provide encodedUrl with propper message', async () => {
       const result: Result<EncodedData> = await urlService.encode(url);
 
       expect(result.message).toEqual(constants.ENCODED_SUCCESS);
@@ -19,11 +19,11 @@ describe('Shorten-Url Service Testing', () => {
   });
 
   describe('Decode', () => {
-    it('should provide decodedUrl(orginal) with propper mesage', async () => {
+    it('should provide decodedUrl(original) with propper message', async () => {
       const result: Result<DecodedData> = await urlService.decode(encodedUrl);
 
       expect(result.success).toEqual(true);
-      expect(result.message).toEqual(constants.DECODED_SUCCES);
+      expect(result.message).toEqual(constants.DECODED_SUCCESS);
       expect(result).toHaveProperty('data');
     });
   });
