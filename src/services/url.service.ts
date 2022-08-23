@@ -7,12 +7,12 @@ import urlModel from '../models/url.model';
 import { createFullUrl, getCode } from '../utils/util';
 
 class UrlService {
-  public urls = urlModel;
+  public urls: Url[] = urlModel;
 
   public async encode(url: string): Promise<Result<EncodedData>> {
     let result: Result<EncodedData>;
-    const record: Url | undefined = this.urls.find(item => item.url === url);
 
+    const record: Url | undefined = this.urls.find(item => item.url === url);
     if (record) {
       const encodedUrl: string = createFullUrl(record.code);
       result = {

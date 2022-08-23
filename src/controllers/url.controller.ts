@@ -10,7 +10,7 @@ class UrlController {
   public encode = async (req: Request, res: Response): Promise<void> => {
     const url: string = req.body.url as string;
 
-    const encodeResult:Result<EncodedData> = await this.urlService.encode(url);
+    const encodeResult: Result<EncodedData> = await this.urlService.encode(url);
     if (encodeResult.success) {
       res.status(200).json({ data: encodeResult.data, message: encodeResult.message });
     } else {
@@ -20,8 +20,11 @@ class UrlController {
 
   public decode = async (req: Request, res: Response): Promise<void> => {
     let decodedResult: Result<DecodedData>;
+
     const encodedUrl: string = req.query.encodedUrl as string;
-    if (validateEncodedUrl(encodedUrl)) {
+    const isValid = validateEncodedUrl(encodedUrl);
+
+    if (isValid.success) {
       decodedResult = await this.urlService.decode(encodedUrl);
       if (decodedResult.success) {
         res.status(200).json({ data: decodedResult.data, message: decodedResult.message });
