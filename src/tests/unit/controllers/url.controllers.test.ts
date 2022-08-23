@@ -1,7 +1,6 @@
 import { Request} from 'express';
 import express from 'express';
 
-import constants from '../../../utils/constants';
 import UrlController from '../../../controllers/url.controller';
 import UrlService from '../../../services/url.service';
 
@@ -23,7 +22,7 @@ describe('Shorten-Url Controllers Testing', () => {
       const urlController:UrlController = new UrlController();
       const urlService:UrlService = new UrlService();
 
-      let dummyRequest: Request = express.request;
+      const dummyRequest: Request = express.request;
       dummyRequest.body = { url: 'http://google.com' };
 
       urlController.encode(dummyRequest, express.response);
@@ -36,7 +35,7 @@ describe('Shorten-Url Controllers Testing', () => {
       const urlController:UrlController = new UrlController();
       const urlService:UrlService = new UrlService();
 
-      let dummyRequest: Request = express.request;
+      const dummyRequest: Request = express.request;
       dummyRequest.query = { encodedUrl: 'http://localhost:3000/ssasa' };
       
       urlController.decode(dummyRequest, express.response);

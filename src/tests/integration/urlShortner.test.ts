@@ -4,7 +4,7 @@ import constants from '../../utils/constants';
 
 describe('Shorten-Url Integration Testing', () => {
     const urlService: UrlService = new UrlService();
-    let url: string = 'httpd://amazon.com';
+    const url = 'http://amazon.com';
     let encodedUrl: string;
 
     describe('Encode', () => {
@@ -21,12 +21,12 @@ describe('Shorten-Url Integration Testing', () => {
       });
 
       it('should provide encodedUrl with propper mesage(already encoded)', async () => {
-        const result: Result<any> = await urlService.encode(url);
+        const result: Result<EncodedData> = await urlService.encode(url);
         expect(result.message).toEqual(constants.ALREADY_ENCODED);
         expect(result.success).toEqual(true);
         expect(result).toHaveProperty('data');
         expect(result.data).toHaveProperty('encodedUrl');
-        expect(result.data.encodedUrl).toMatch(/http/);
+        expect(result.data?.encodedUrl).toMatch(/http/);
       });
   
     });
@@ -42,7 +42,7 @@ describe('Shorten-Url Integration Testing', () => {
         expect(result.data?.url).toEqual(url);
       });
       it('should provide sucess as false with propper mesage for non existent urls', async () => {
-        const result: Result<any> = await urlService.decode('http://localhost:3000/dsds');
+        const result: Result<DecodedData> = await urlService.decode('http://localhost:3000/dsds');
         expect(result.success).toEqual(false);
         expect(result.message).toEqual(constants.NOT_FOUND);
       });

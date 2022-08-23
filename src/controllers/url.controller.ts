@@ -8,10 +8,9 @@ class UrlController {
   private urlService: UrlService = new UrlService();
 
   public encode = async (req: Request, res: Response): Promise<void> => {
-    let encodeResult: Result<EncodedData>;
     const url: string = req.body.url as string;
 
-    encodeResult = await this.urlService.encode(url);
+    const encodeResult:Result<EncodedData> = await this.urlService.encode(url);
     if (encodeResult.success) {
       res.status(200).json({ data: encodeResult.data, message: encodeResult.message });
     } else {

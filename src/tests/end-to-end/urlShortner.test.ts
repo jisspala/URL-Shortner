@@ -5,10 +5,9 @@ import constants from '../../utils/constants';
 describe('Shorten Url End to End Testing', () => {
   const app = new App();
   app.start();
-  let request: supertest.SuperTest<supertest.Test>;
   let encodedUrl: string;
-  let url: string = 'httpd://google.com';
-  request = supertest(app.getServer());
+  const url = 'httpd://google.com';
+  const request: supertest.SuperTest<supertest.Test> = supertest(app.getServer());
   
   describe('[POST] /encode', () => {
     it('should provide encodedUrl with propper mesage', async () => {

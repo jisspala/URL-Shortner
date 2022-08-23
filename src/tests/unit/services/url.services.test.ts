@@ -4,7 +4,7 @@ import constants from '../../../utils/constants';
 
 describe('Shorten-Url Service Testing', () => {
   const urlService: UrlService = new UrlService();
-  let url: string = 'httpd://fb.com';
+  const url = 'httpd://fb.com';
   let encodedUrl: string;
 
   describe('Encode', () => {

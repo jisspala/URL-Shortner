@@ -1,4 +1,3 @@
-import * as nodeUrl from 'node:url';
 import { nanoid } from 'nanoid';
 import { Result, EncodedData, DecodedData } from '../interfaces/url.interface';
 import constants from '../utils/constants';
@@ -43,7 +42,7 @@ class UrlService {
 
   public async decode(encodedUrl: string): Promise<Result<DecodedData>> {
     let result: Result<DecodedData>;
-    
+
     const code: string | undefined = getCode(encodedUrl);
     const record: Url | undefined = this.urls.find(item => item.code === code);
 
