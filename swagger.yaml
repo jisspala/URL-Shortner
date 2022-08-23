@@ -1,0 +1,60 @@
+tags:
+- name: Url Shortner
+  description: The url shortner API
+
+paths:
+# [POST] encode
+  /encode:
+    post:
+      tags:
+      - Shortner
+      summary: short(encode) a url
+      parameters:
+      - name: body
+        in: body
+        description: The url which we need to shorten
+        required: true
+        schema:
+          $ref: '#/definitions/Urls'
+      responses:
+        200:
+          description: 'Created'
+        400:
+          description: 'Bad Request'
+        500:
+          description: 'Server Error'
+
+# [GET] decode
+  /decode:
+    get:
+      tags:
+      - Shortner
+      summary: The url which we need to decode
+      parameters:
+      - name: encodedUrl
+        in: query
+        description: encoded(short) Url
+        required: true
+        type: string
+      responses:
+        200:
+          description: 'OK'
+        400:
+          description: 'Bad Request'
+        500:
+          description: 'Server Error'
+
+# definitions
+definitions:
+  Urls:
+    type: object
+    required:
+        - url
+    properties:
+      url:
+        type: string
+        description: web address
+
+schemes:
+ - https
+ - http

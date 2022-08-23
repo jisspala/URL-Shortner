@@ -32,7 +32,7 @@ class UrlService {
     this.urls.push(newRecord);
 
     const fullUrl: string = createFullUrl(newRecord.code);
-    
+
     result = {
       success: true,
       data: { encodedUrl: fullUrl },
@@ -43,7 +43,7 @@ class UrlService {
 
   public async decode(encodedUrl: string): Promise<Result<DecodedData>> {
     let result: Result<DecodedData>;
-
+    
     const code: string | undefined = getCode(encodedUrl);
     const record: Url | undefined = this.urls.find(item => item.code === code);
 

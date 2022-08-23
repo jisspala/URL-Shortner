@@ -3,6 +3,9 @@ import UrlRoute from './routes/url.route';
 import logger from './utils/logger';
 import { PORT, HOST_NAME } from './config';
 
+import swaggerJSdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
+
 class App {
   private app: Application;
 
@@ -10,6 +13,7 @@ class App {
     this.app = express();
     this.initializeMiddlewares();
     this.initializeRoutes();
+    this.initializeSwagger();
   }
 
   private initializeMiddlewares(): void {
@@ -30,6 +34,21 @@ class App {
 
   public getServer(): Application {
     return this.app;
+  }
+
+  private initializeSwagger(): void {
+    const options = {
+      swaggerDefinition: {
+        info: {
+          title: 'REST API',
+          version: '1.0.0',
+          description: 'Example docs',
+        },
+      },
+      apis: ['swagger.yaml'],
+    };
+    const specs = swaggerJSdoc(options);
+    this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
   }
 }
 export default App;
